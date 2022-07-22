@@ -49,6 +49,22 @@ class Dashboard extends CI_Controller
 				$this->load->view('V_Dashboard', $data);
 				break;
 
+
+				break;
+
+			case '3':
+				$data = generate_page('Dashboard', 'dashboard', 'Vendor');
+
+				// $data_content['total_datapegawai'] = $this->m_dashboard->total_pegawai();
+				// $data_content['total_organik_pelindo'] = $this->m_dashboard->pegawai_total_organik_pelindo();
+				// $data_content['total_organik_ptp'] = $this->m_dashboard->pegawai_total_organik_ptp();
+				// $data_content['total_organik_tno'] = $this->m_dashboard->pegawai_total_tno();
+				// $data_content['total_organik_pkwt'] = $this->m_dashboard->pegawai_total_pkwt();
+
+				$data['content'] = $this->load->view('partial/Dashboard/Vendor', $data, true);
+				$this->load->view('V_Dashboard', $data);
+				break;
+
 			default:
 				# code...
 				break;

@@ -28,7 +28,8 @@
                   <select name="type" class="form-control">
                     <option disabled selected>-- Pilih --</option>
                     <option value="admin" <?= (($data_admin->id_role == '1') ? 'selected' : ''); ?>>Admin</option>
-                    <option value="pegawai" <?= (($data_admin->id_role == '2') ? 'selected' : ''); ?>>Pegawai</option>
+                    <option value="vendor gedung" <?= (($data_admin->id_role == '2') ? 'selected' : ''); ?>>vendor gedung</option>
+                    <option value="vendor mua" <?= (($data_admin->id_role == '3') ? 'selected' : ''); ?>>vendor mua</option>
                     <!-- <option value="baak" <?= (($data_admin->type == 'baak') ? 'selected' : ''); ?>>Ka. BAAK</option> -->
                   </select>
                 </div>

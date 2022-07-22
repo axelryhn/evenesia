@@ -12,17 +12,7 @@ class M_DataMaster extends CI_Model
 		return $q;
 	}
 
-	public function jabatan_list_all()
-	{
-		$q = $this->db->select('*')->get('tb_jabatan');
-		return $q->result();
-	}
 
-	public function bidang_list_all()
-	{
-		$q = $this->db->select('*')->get('tb_bidang');
-		return $q->result();
-	}
 
 	public function pegawai_list_all()
 	{
@@ -32,50 +22,7 @@ class M_DataMaster extends CI_Model
 		return $q->result();
 	}
 
-	public function namaizin_list_all()
-	{
-		$q = $this->db->select('*')->get('tb_namaizin');
-		return $q->result();
-	}
 
-	public function get_list_bidang()
-	{
-		$q = $this->db->select('*')->get('tb_bidang');
-		return $q->result();
-	}
-
-	public function get_list_jabatan()
-	{
-		$q = $this->db->select('*')->get('tb_jabatan');
-		return $q->result();
-	}
-
-	public function get_data_jabatan($id)
-	{
-		$q = $this->db->select('*')->from('tb_jabatan')->where('id_jabatan', $id)->limit(1)->get();
-		if ($q->num_rows() < 1) {
-			redirect(base_url('/data_master/jabatan'));
-		}
-		return $q->row();
-	}
-
-	public function get_data_bidang($id)
-	{
-		$q = $this->db->select('*')->from('tb_bidang')->where('id_bidang', $id)->limit(1)->get();
-		if ($q->num_rows() < 1) {
-			redirect(base_url('/data_master/bidang'));
-		}
-		return $q->row();
-	}
-
-	public function get_data_namaizin($id)
-	{
-		$q = $this->db->select('*')->from('tb_namaizin')->where('id_namaizin', $id)->limit(1)->get();
-		if ($q->num_rows() < 1) {
-			redirect(base_url('/data_master/cuti'));
-		}
-		return $q->row();
-	}
 
 	public function get_data_admin($id)
 	{
@@ -99,41 +46,17 @@ class M_DataMaster extends CI_Model
 		return $q->row();
 	}
 
-	public function jabatan_update($id, $nama_jabatan)
-	{
-		$d_t_d = array(
-			'nama_jabatan' => $nama_jabatan
-		);
-		$this->db->where('id_jabatan', $id)->update('tb_jabatan', $d_t_d);
-		$this->session->set_flashdata('msg_alert', 'Data jabatan berhasil diubah');
-	}
 
-	public function bidang_update($id, $nama_bidang)
-	{
-		$d_t_d = array(
-			'nama_bidang' => $nama_bidang
-		);
-		$this->db->where('id_bidang', $id)->update('tb_bidang', $d_t_d);
-		$this->session->set_flashdata('msg_alert', 'Data bidang berhasil diubah');
-	}
-
-	public function namaizin_update($id_namaizin, $type, $nama_izin)
-	{
-		$d_t_d = array(
-			'type' => $type,
-			'nama_izin' => $nama_izin
-		);
-		$this->db->where('id_namaizin', $id_namaizin)->update('tb_namaizin', $d_t_d);
-		$this->session->set_flashdata('msg_alert', 'Data nama izin berhasil diubah');
-	}
 
 	public function admin_update($id_user, $username, $nip, $namalengkap, $password, $type, $avatar)
 	{
 		$role = 0;
 		if ($type == 'admin') {
 			$role = 1;
-		} else {
+		} else if ($type == 'vendor gedung') {
 			$role = 2;
+		} else {
+			$role = 3;
 		}
 
 		$d_t_d = array(

@@ -27,7 +27,8 @@
                   <select name="type" class="form-control">
                     <option disabled selected>-- Pilih --</option>
                     <option value="admin">Admin</option>
-                    <option value="client">Client</option>
+                    <option value="vendor gedung">Vendor Gedung</option>
+                    <option value="vendor mua">Vendor MUA</option>
                   </select>
                 </div>
               </div>

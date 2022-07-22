@@ -90,7 +90,7 @@ class Dataadmin extends CI_Controller
             foreach ($result as $key => $value) {
                 $value->no = $i;
                 $new_arr[] = $value;
-                $value->id_role = ($value->id_role == '1') ? "Admin" : "Client";
+                // $value->id_role = ($value->id_role == '1') ? "Admin" : "Vendor Gedung";
                 $value->avatar = '<img src="' . uploads_url('avatar/' . $value->avatar) . '" alt="image" />';
                 $i++;
             }
