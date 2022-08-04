@@ -67,6 +67,10 @@ function data_admin_index() {
             data: 'no'
         },
         {
+            title: "Username",
+            data: 'username'
+        },
+        {
             title: "Avatar",
             data: 'avatar'
         },
@@ -79,8 +83,36 @@ function data_admin_index() {
             data: 'id_role'
         },
         {
-            title: "Nip",
-            data: 'nip'
+            title: "Link IG",
+            data: 'link_ig'
+        },
+        {
+            title: "Alamat",
+            data: 'alamat'
+        },
+        {
+            title: "Nomor HP",
+            data: 'no_hp'
+        },
+        {
+            title: "Jenis Kelamin",
+            data: 'jk'
+        },
+        {
+            title: "Email",
+            data: 'email'
+        },
+        {
+            title: "Portofolio",
+            data: 'portofolio'
+        },
+        {
+            title: "Followers",
+            data: 'followers'
+        },
+        {
+            title: "Jumlah Followers",
+            data: 'jumlah_followers'
         },
         {
             title: "Action",
@@ -107,14 +139,6 @@ $(document).ready(function () {
         case (window.location.href.indexOf('/Dataadmin') != -1):
             data_admin_index();
             break;
-        case (window.location.href.indexOf('/data_master/jabatan') != -1):
-            data_jabatan_index();
-            break;
-        case (window.location.href.indexOf('/data_master/bidang') != -1):
-            data_bidang_index();
-            break;
-        case (window.location.href.indexOf('/data_master/pegawai') != -1):
-            data_pegawai_index();
-            break;
+       
     }
 });

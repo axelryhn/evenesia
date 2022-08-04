@@ -107,10 +107,12 @@ class Dataadmin extends CI_Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id_user = $this->security->xss_clean($this->input->post('id_user'));
             $username = $this->security->xss_clean($this->input->post('username'));
-            $nip = $this->security->xss_clean($this->input->post('nip'));
-            $namalengkap = $this->security->xss_clean($this->input->post('namalengkap'));
+            $nama = $this->security->xss_clean($this->input->post('nama'));
             $password = $this->security->xss_clean($this->input->post('password'));
             $type = $this->security->xss_clean($this->input->post('type'));
+            $portofolio = $this->security->xss_clean($this->input->post('portofolio'));
+            $followers = $this->security->xss_clean($this->input->post('followers'));
+            $jumlah_followers = $this->security->xss_clean($this->input->post('jumlah_followers'));
             $avatar = '';
             // avatar
             if ($this->security->xss_clean($_FILES["avatar"]) && $_FILES['avatar']['name']) {
@@ -131,10 +133,14 @@ class Dataadmin extends CI_Controller
             // validasi
             $this->form_validation->set_rules('id_user', 'id_user', 'required');
             $this->form_validation->set_rules('username', 'Username', 'required');
-            $this->form_validation->set_rules('nip', 'Nip', 'required');
-            $this->form_validation->set_rules('namalengkap', 'Nama Lengkap', 'required');
-            $this->form_validation->set_rules('password', 'Password', '');
+            $this->form_validation->set_rules('nama', 'Nama ', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('portofolio', 'Portofolio', 'required');
+            $this->form_validation->set_rules('followers', 'Followers', 'required');
+            $this->form_validation->set_rules('jumlah_followers', 'Jumlah Followers', 'required');
             $this->form_validation->set_rules('type', 'Type', 'required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required');
 
             if (!$this->form_validation->run()) {
                 $this->session->set_flashdata('msg_alert', validation_errors());
@@ -143,10 +149,12 @@ class Dataadmin extends CI_Controller
             $this->m_datamaster->admin_update(
                 $id_user,
                 $username,
-                $nip,
-                $namalengkap,
+                $nama,
                 $password,
                 $type,
+                $portofolio,
+                $followers,
+                $jumlah_followers,
                 $avatar
             );
             redirect(base_url('Dataadmin'));
@@ -173,8 +181,12 @@ class Dataadmin extends CI_Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $username = $this->security->xss_clean($this->input->post('username'));
-            $nip = $this->security->xss_clean($this->input->post('nip'));
-            $namalengkap = $this->security->xss_clean($this->input->post('namalengkap'));
+            $nama = $this->security->xss_clean($this->input->post('nama'));
+            $alamat = $this->security->xss_clean($this->input->post('alamat'));
+            $jk = $this->security->xss_clean($this->input->post('jk'));
+            $link_ig = $this->security->xss_clean($this->input->post('link_ig'));
+            $no_hp = $this->security->xss_clean($this->input->post('no_hp'));
+            $email = $this->security->xss_clean($this->input->post('email'));
             $password = $this->security->xss_clean($this->input->post('password'));
             $type = $this->security->xss_clean($this->input->post('type'));
             $avatar = '';
@@ -196,8 +208,7 @@ class Dataadmin extends CI_Controller
             }
             // validasi
             $this->form_validation->set_rules('username', 'Username', 'required');
-            $this->form_validation->set_rules('nip', 'Nip', 'required');
-            $this->form_validation->set_rules('namalengkap', 'Nama Lengkap', 'required');
+            $this->form_validation->set_rules('nama', 'Nama', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');
             $this->form_validation->set_rules('type', 'Type', 'required');
             if (!$this->form_validation->run()) {
@@ -206,9 +217,13 @@ class Dataadmin extends CI_Controller
             }
             $this->m_datamaster->admin_add_new(
                 $username,
-                $nip,
-                $namalengkap,
+                $nama,
                 $password,
+                $link_ig,
+                $alamat,
+                $no_hp,
+                $jk,
+                $email,
                 $type,
                 $avatar
             );
@@ -219,6 +234,67 @@ class Dataadmin extends CI_Controller
         $data_content['title_page'] = 'Entry Data Master Admin';
         $data['content'] = $this->load->view('partial/DataMasterAdmin/V_Admin_DataMasterAdmin_Create', $data_content, true);
         $this->load->view('V_DataMaster_Admin', $data);
+    }
+
+    public function add_new_mua()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $username = $this->security->xss_clean($this->input->post('username'));
+            $nama = $this->security->xss_clean($this->input->post('nama'));
+            $link_ig = $this->security->xss_clean($this->input->post('link_ig'));
+            $password = $this->security->xss_clean($this->input->post('password'));
+            $type = $this->security->xss_clean($this->input->post('type'));
+            $alamat = $this->security->xss_clean($this->input->post('alamat'));
+            $jk = $this->security->xss_clean($this->input->post('jk'));
+            $email = $this->security->xss_clean($this->input->post('email'));
+            $avatar = '';
+            // avatar
+            if ($this->security->xss_clean($_FILES["avatar"]) && $_FILES['avatar']['name']) {
+                $config['upload_path']          = './uploads/avatar/';
+                $config['allowed_types']        = 'jpg|jpeg|png';
+                $config['max_size']             = 2000;
+                $config['file_name']            = md5(time() . '_' . $_FILES["avatar"]['name']);
+
+                $this->load->library('upload', $config);
+
+                if (!$this->upload->do_upload('avatar') && !empty($_FILES['avatar']['name'])) {
+                    $this->session->set_flashdata('msg_alert', $this->upload->display_errors());
+                    redirect(base_url('data_master/edit/' . $name . '/' . $id));
+                } else {
+                    $avatar = $this->upload->data()['file_name'];
+                }
+            }
+            // validasi
+            $this->form_validation->set_rules('username', 'Username', 'required');
+            $this->form_validation->set_rules('jk', 'Jenik Kelamin', 'required');
+            $this->form_validation->set_rules('nama', 'Nama Lengkap', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('type', 'Type', 'required');
+            $this->form_validation->set_rules('link_ig', 'Link IG', 'required');
+            $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required');
+            if (!$this->form_validation->run()) {
+                $this->session->set_flashdata('msg_alert', validation_errors());
+                redirect(base_url('Dataadmin/add_new_mua/'));
+            }
+            $this->m_datamaster->admin_add_new_mua(
+                $username,
+                $jk,
+                $nama,
+                $password,
+                $type,
+                $link_ig,
+                $alamat,
+                $email,
+                $avatar
+            );
+            redirect(base_url('V_Register'));
+        }
+        $data = generate_page('Entry Data Master Admin', 'data_master/add_new_mua/admin', 'Admin');
+
+        $data_content['title_page'] = 'Entry Data Master Admin';
+        $data['content'] = $this->load->view('V_Register', $data_content, true);
+        $this->load->view('V_Register', $data);
     }
 }
 

@@ -4,36 +4,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_Auth extends CI_Model
 {
 
-	// private function loginAdmin($nip, $password)
-	// {
-	// 	$q = $this->db->select('*')->where(array('nip' => $nip, 'password' => md5($password)))->get('tb_admin');
-	// 	return $q;
-	// }
 
-	// private function loginPegawai($nip, $password)
-	// {
-	// 	$q = $this->db->select('*')->where(array('nip' => $nip, 'password' => md5($password)))->get('tb_pegawai');
-	// 	return $q;
-	// }
-
-	private function loginUser($nip, $password)
+	private function loginUser($email, $password)
 	{
-		$q = $this->db->select('*')->where(array('nip' => $nip, 'password' => md5($password)))->get('tb_user');
+		$q = $this->db->select('*')->where(array('email' => $email, 'password' => md5($password)))->get('tb_user');
 		return $q;
 	}
 
-	public function doLogin($nip, $password)
+	public function doLogin($email, $password)
 	{
 
 
-		$cek_login_user = $this->loginUser($nip, $password);
+		$cek_login_user = $this->loginUser($email, $password);
 		if ($cek_login_user->num_rows()) {
 			$d = $cek_login_user->row();
 			$this->session->set_userdata('is_logged_in', 'login');
 			$this->session->set_userdata('user_type', $d->id_role);
 			$this->session->set_userdata('user_id', $d->id);
 			$this->session->set_userdata('user_name', $d->nama);
-			$this->session->set_userdata('user_nip', $d->nip);
+			$this->session->set_userdata('user_email', $d->email);
 			$this->session->set_userdata('user_username', $d->username);
 			$this->session->set_userdata('user_avatar', uploads_url('avatar/' . $d->avatar));
 

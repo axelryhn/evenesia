@@ -48,12 +48,12 @@ class M_DataMaster extends CI_Model
 
 
 
-	public function admin_update($id_user, $username, $nip, $namalengkap, $password, $type, $avatar)
+	public function admin_update($id_user, $username, $email, $nama, $password, $type, $avatar, $portofolio, $followers, $jumlah_followers)
 	{
 		$role = 0;
 		if ($type == 'admin') {
 			$role = 1;
-		} else if ($type == 'vendor gedung') {
+		} else if ($type == 'mua') {
 			$role = 2;
 		} else {
 			$role = 3;
@@ -62,8 +62,11 @@ class M_DataMaster extends CI_Model
 		$d_t_d = array(
 			'id' => $id_user,
 			'username' => $username,
-			'nip' => $nip,
-			'nama' => $namalengkap,
+			'email' => $email,
+			'nama' => $nama,
+			'portofolio' => $portofolio,
+			'followers' => $followers,
+			'jumlah_followers' => $jumlah_followers,
 			'id_role' => $role
 		);
 
@@ -77,81 +80,43 @@ class M_DataMaster extends CI_Model
 		$this->session->set_flashdata('msg_alert', 'Data admin berhasil diubah');
 	}
 
-	public function pegawai_update(
-		$id,
-		$nama,
-		$nip,
-		$tanggal_lahir,
-		$jenis_kelamin,
-		$unit_kerja,
-		$status_pegawai,
-		$password,
-		$id_user,
-		$avatar
-	) {
-		$d_t_d = array(
-			'nama' => $nama,
-			'nip' => $nip,
-			'tanggal_lahir' => $tanggal_lahir,
-			'jenis_kelamin' => $jenis_kelamin,
-			'unit_kerja' => $unit_kerja,
-			'status_pegawai' => $status_pegawai,
-			'id_user' => $id_user
-		);
-		if (!empty($password)) {
-			$d_t_d['password'] = md5($password);
-		}
-		if (!empty($avatar)) {
-			$d_t_d['avatar'] = $avatar;
-		}
-		$this->db->where('id', $id)->update('tb_pegawai', $d_t_d);
-		$this->session->set_flashdata('msg_alert', 'Data pegawai berhasil diubah');
-	}
+
 
 	public function admin_delete($id)
 	{
 		$this->db->delete('tb_user', array('id' => $id));
 	}
 
-	public function jabatan_delete($id)
-	{
-		$this->db->delete('tb_jabatan', array('id_jabatan' => $id));
-	}
-
-	public function bidang_delete($id)
-	{
-		$this->db->delete('tb_bidang', array('id_bidang' => $id));
-	}
-
-	public function pegawai_delete($id)
-	{
-		$this->db->delete('tb_pegawai', array('id' => $id));
-	}
-
-	public function namaizin_delete($id)
-	{
-		$this->db->delete('tb_namaizin', array('id_namaizin' => $id));
-	}
 
 	public function admin_add_new(
 		$username,
-		$nip,
-		$namalengkap,
+		$nama,
 		$password,
+		$link_ig,
+		$alamat,
+		$no_hp,
+		$jk,
+		$email,
 		$type,
 		$avatar = 0
 	) {
 		$role = 0;
 		if ($type == 'admin') {
 			$role = 1;
-		} else {
+		} else if ($type == 'mua') {
 			$role = 2;
+		} else {
+			$role = 3;
 		}
 		$d_t_d = array(
 			'username' => $username,
-			'nip' => $nip,
-			'nama' => $namalengkap,
+			'nama' => $nama,
 			'password' => md5($password),
+			'link_ig' => $link_ig,
+			'alamat' => $alamat,
+			'no_hp' => $no_hp,
+			'jk' => $jk,
+			'email' => $email,
 			'id_role' => $role,
 			'avatar' => $avatar
 		);
@@ -162,66 +127,50 @@ class M_DataMaster extends CI_Model
 		$this->session->set_flashdata('msg_alert', $type . ' baru berhasil ditambahkan');
 	}
 
-	public function jabatan_add_new(
-		$nama_jabatan
-	) {
-		$d_t_d = array(
-			'nama_jabatan' => $nama_jabatan
-		);
-		$this->db->insert('tb_jabatan', $d_t_d);
-		$this->session->set_flashdata('msg_alert', 'Jabatan baru berhasil ditambahkan');
-	}
-
-	public function bidang_add_new(
-		$nama_bidang
-	) {
-		$d_t_d = array(
-			'nama_bidang' => $nama_bidang
-		);
-		$this->db->insert('tb_bidang', $d_t_d);
-		$this->session->set_flashdata('msg_alert', 'Bidang baru berhasil ditambahkan');
-	}
-
-	public function namaizin_add_new(
-		$type,
-		$nama_izin
-	) {
-		$d_t_d = array(
-			'type' => $type,
-			'nama_izin' => $nama_izin
-		);
-		$this->db->insert('tb_namaizin', $d_t_d);
-		$this->session->set_flashdata('msg_alert', 'Nama izin baru berhasil ditambahkan');
-	}
-
-	public function pegawai_add_new(
-		$nama,
+	public function admin_add_new_mua(
+		$username,
 		$nip,
-		$tanggal_lahir,
-		$jenis_kelamin,
-		$unit_kerja,
-		$status_pegawai,
+		$nama,
 		$password,
-		$id_user,
+		$link_ig,
+		$alamat,
+		$no_hp,
+		$jk,
+		$email,
+		$type,
 		$avatar = 0
 	) {
+		$role = 0;
+		if ($type == 'admin') {
+			$role = 1;
+		} else if ($type == 'mua') {
+			$role = 2;
+		} else {
+			$role = 3;
+		}
 		$d_t_d = array(
-			'nama' => $nama,
+			'username' => $username,
 			'nip' => $nip,
-			'tanggal_lahir' => $tanggal_lahir,
-			'jenis_kelamin' => $jenis_kelamin,
-			'unit_kerja' => $unit_kerja,
-			'status_pegawai' => $status_pegawai,
+			'nama' => $nama,
 			'password' => md5($password),
-			'id_user' => $id_user,
+			'link_ig' => $link_ig,
+			'alamat' => $alamat,
+			'no_hp' => $no_hp,
+			'jk' => $jk,
+			'email' => $email,
+			'id_role' => $role,
 			'avatar' => $avatar
 		);
 		if (empty($avatar)) {
 			$d_t_d['avatar'] = 'avatar.png';
 		}
-		$this->db->insert('tb_pegawai', $d_t_d);
-		$this->session->set_flashdata('msg_alert', 'Pegawai baru berhasil ditambahkan');
+		$this->db->insert('tb_user', $d_t_d);
+		$this->session->set_flashdata('msg_alert', $type . ' baru berhasil ditambahkan');
 	}
+
+
+
+
 
 	function getDataDetail($id)
 	{

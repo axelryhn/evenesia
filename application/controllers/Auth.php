@@ -28,18 +28,19 @@ class Auth extends CI_Controller
 		is_login(function () {
 			redirect(base_url('dashboard'));
 		});
+
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$nip = $this->security->xss_clean($this->input->post('nip'));
+			$email = $this->security->xss_clean($this->input->post('email'));
 			$password = $this->security->xss_clean($this->input->post('password'));
 			// validasi
-			$this->form_validation->set_rules('nip', 'NIP', 'trim|required');
+			$this->form_validation->set_rules('email', 'Email', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 			if (!$this->form_validation->run()) {
-				$this->session->set_flashdata('msg_alert', 'Masukkan nipp dan password');
+				$this->session->set_flashdata('msg_alert', 'Masukkan Email dan password');
 				redirect(base_url('auth/login'));
 			}
 			// lakukan login
-			$this->m_auth->doLogin($nip, $password);
+			$this->m_auth->doLogin($email, $password);
 		} else {
 			$this->load->view('V_Auth');
 		}

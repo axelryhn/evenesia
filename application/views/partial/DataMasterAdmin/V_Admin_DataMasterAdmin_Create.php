@@ -16,7 +16,7 @@
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-9">
-                  <input type="text" name="namalengkap" class="form-control" />
+                  <input type="text" name="nama" class="form-control" />
                 </div>
               </div>
             </div>
@@ -27,8 +27,8 @@
                   <select name="type" class="form-control">
                     <option disabled selected>-- Pilih --</option>
                     <option value="admin">Admin</option>
-                    <option value="vendor gedung">Vendor Gedung</option>
-                    <option value="vendor mua">Vendor MUA</option>
+                    <option value="mua">Vendor Mua</option>
+                    <option value="gedung">Vendor Gedung</option>
                   </select>
                 </div>
               </div>
@@ -45,9 +45,9 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">NIPP</label>
+                <label class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-9">
-                  <input type="text" name="nip" class="form-control" />
+                  <input type="text" name="email" class="form-control" />
                 </div>
               </div>
             </div>

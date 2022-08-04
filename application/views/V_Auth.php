@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="<?= $this->security->get_csrf_token_name(); ?>" content="<?= $this->security->get_csrf_hash(); ?>">
   <meta name="description" content="SDM" />
-  <meta name="author" content="Axel reyhan" />
+  <meta name="author" content="Hasya Afifah Khoirunnisa" />
   <title>Login </title>
   <link rel="stylesheet" href="<?= assets_url('vendors/iconfonts/mdi/css/materialdesignicons.min.css'); ?>">
   <link rel="stylesheet" href="<?= assets_url('vendors/iconfonts/puse-icons-feather/feather.css'); ?>">
@@ -36,8 +36,8 @@
                 </div>
               <?php } ?>
               <div class="form-group">
-                <label class="label">NIPP/NIP</label>
-                <input type="text" name="nip" class="form-control" placeholder="NIPP/NIP">
+                <label class="label">E-Mail</label>
+                <input type="text" name="email" class="form-control" placeholder="E-Mail">
               </div>
               <div class="form-group">
                 <label class="label">Password</label>
@@ -48,8 +48,12 @@
                   <div class="g-recaptcha" data-sitekey="6LftN2IUAAAAALCWS7KvM5zb913HfuR89PeQr04L"></div>
                 </center>
               </div> -->
+
               <div class="form-group">
                 <button class="btn btn-primary submit-btn btn-block">Masuk</button>
+              </div>
+              <div>
+                <a href="<?= base_url("/Dataadmin/add_new_mua"); ?>" style="text-align: right;">Register</a>
               </div>
               <!-- <div class="form-group d-flex justify-content-between">
 
@@ -57,6 +61,7 @@
               </div> -->
               <?= form_close(); ?>
             </div>
+
           </div>
         </div>
       </div>
