@@ -7,7 +7,7 @@ class Login extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('M_api');
+        $this->load->model('M_login');
     }
 
     // ini buat login ya sya
@@ -15,9 +15,9 @@ class Login extends CI_Controller
     public function login()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST['email']) && isset($_POST['password'])) {
+            if (isset($_POST['username']) && isset($_POST['password'])) {
 
-                $user_login = $this->M_api->proses_login($_POST['email'], $_POST['password']);
+                $user_login = $this->M_login->proses_login($_POST['username'], $_POST['password']);
                 $result['id']   = null;
 
                 if ($user_login->num_rows() == 1) {

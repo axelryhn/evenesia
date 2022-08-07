@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2022 at 11:25 AM
+-- Generation Time: Aug 04, 2022 at 01:49 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -20,6 +20,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `evenesia`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_bookinggedung`
+--
+
+CREATE TABLE `tb_bookinggedung` (
+  `id` int(11) NOT NULL,
+  `email` varchar(256) NOT NULL,
+  `no_hp` varchar(256) NOT NULL,
+  `keperluan` varchar(256) NOT NULL,
+  `nama` varchar(256) NOT NULL,
+  `harga` varchar(256) NOT NULL,
+  `tanggal` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_bookinggedung`
+--
+
+INSERT INTO `tb_bookinggedung` (`id`, `email`, `no_hp`, `keperluan`, `nama`, `harga`, `tanggal`) VALUES
+(1, 'tes', '21', 'dda', 'tes', '131', '1');
 
 -- --------------------------------------------------------
 
@@ -96,6 +119,20 @@ INSERT INTO `tb_ebook` (`id`, `judul`, `tahun`, `kategori`, `file`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_event`
+--
+
+CREATE TABLE `tb_event` (
+  `id` int(11) DEFAULT NULL,
+  `gambar` varchar(256) NOT NULL,
+  `judul` varchar(256) NOT NULL,
+  `deskripsi` varchar(256) NOT NULL,
+  `link` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_inbox`
 --
 
@@ -123,12 +160,34 @@ INSERT INTO `tb_inbox` (`id`, `nama`, `keterangan`, `status`) VALUES
 --
 
 CREATE TABLE `tb_pengguna` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
   `nama` varchar(256) NOT NULL,
   `username` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
   `no_hp` varchar(256) NOT NULL,
   `alamat` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_pengguna`
+--
+
+INSERT INTO `tb_pengguna` (`id`, `nama`, `username`, `password`, `no_hp`, `alamat`) VALUES
+(1, 'tes', 'tes', 'tes', '123', 'tes'),
+(2, 'tes', 'tes', 'tes', '123', 'tes'),
+(3, 'test', 'test', 'tes', '123', 'test'),
+(4, 'test', 'test', 'tes', '123', 'test'),
+(5, 'test', 'testt', 'testt', '123', 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_promo`
+--
+
+CREATE TABLE `tb_promo` (
+  `id` int(11) DEFAULT NULL,
+  `gambar` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -278,6 +337,12 @@ INSERT INTO `tb_user` (`id`, `username`, `nama`, `password`, `avatar`, `link_ig`
 --
 
 --
+-- Indexes for table `tb_bookinggedung`
+--
+ALTER TABLE `tb_bookinggedung`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_cabang`
 --
 ALTER TABLE `tb_cabang`
@@ -293,6 +358,12 @@ ALTER TABLE `tb_ebook`
 -- Indexes for table `tb_inbox`
 --
 ALTER TABLE `tb_inbox`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_pengguna`
+--
+ALTER TABLE `tb_pengguna`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -332,6 +403,12 @@ ALTER TABLE `tb_user`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_bookinggedung`
+--
+ALTER TABLE `tb_bookinggedung`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tb_cabang`
 --
 ALTER TABLE `tb_cabang`
@@ -348,6 +425,12 @@ ALTER TABLE `tb_ebook`
 --
 ALTER TABLE `tb_inbox`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT for table `tb_pengguna`
+--
+ALTER TABLE `tb_pengguna`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_regulasi`
