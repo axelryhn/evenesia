@@ -40,6 +40,7 @@ class Mua extends CI_Controller
         $nama_mua = $this->input->post('nama_mua');
         
         $alamat_mua = $this->input->post('alamat_mua');
+        $skill =  implode(',', $this->input->post( 'skill' , TRUE ) );
         $harga = $this->input->post('harga');
         $instagram = $this->input->post('instagram');
         $whatsapp = $this->input->post('whatsapp');
@@ -70,6 +71,7 @@ class Mua extends CI_Controller
 
             'nama_mua' => $nama_mua,
             'alamat_mua' => $alamat_mua,
+            'skill' => $skill,
             'harga' => $harga,
             'instagram' => $instagram,
             'whatsapp' => $whatsapp,
@@ -80,6 +82,7 @@ class Mua extends CI_Controller
         );
 
         $this->M_Mua->insertData($ArrInsert);
+        $this->skill = implode(',',$post["skill"]);
         $this->session->set_flashdata('msg_alert', 'Data Mua berhasil ditambah');
         redirect(base_url('Mua/index'));
     }
@@ -91,6 +94,7 @@ class Mua extends CI_Controller
         $nama_mua = $this->input->post('nama_mua');
         
         $alamat_mua = $this->input->post('alamat_mua');
+        $skill =  implode(',', $this->input->post( 'skill' , TRUE ) );
         $harga = $this->input->post('harga');
         $instagram = $this->input->post('instagram');
         $whatsapp = $this->input->post('whatsapp');
@@ -121,7 +125,7 @@ class Mua extends CI_Controller
 
             'nama_mua' => $nama_mua,
             'alamat_mua' => $alamat_mua,
-            
+            'skill' => $skill,
             'harga' => $harga,
             'instagram' => $instagram,
             'whatsapp' => $whatsapp,
@@ -132,7 +136,7 @@ class Mua extends CI_Controller
         );
 
         $this->M_Mua->insertData($ArrInsert);
-        
+        $this->skill = implode(',',$post["skill"]);
         $this->session->set_flashdata('msg_alert', 'Data Mua berhasil ditambah');
         redirect(base_url('Mua/index'));
     }

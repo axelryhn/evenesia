@@ -4,46 +4,55 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_Report extends CI_Model
 {
 
-    function getData()
+    public function total_pegawai()
     {
-        $query = $this->db->get('tb_report');
-        return $query->result();
+        $q = $this->db->query('SELECT COUNT(*) FROM tb_datapegawai');
+        return $q->row_array()['COUNT(*)'];
     }
 
-    function getNama($id)
+    public function pegawai_total_organik_pelindo()
     {
-        $this->db->where('id', $id);
-        $query = $this->db->get('tb_user');
-        return $query->row();
+        $q = $this->db->query("SELECT ( SELECT COUNT(*) FROM tb_pegawai WHERE status_pegawai='Organik Pelindo' ) AS TOTAL");
+        return $q->row_array()['TOTAL'];
     }
 
-    function getTotal()
+    public function pegawai_total_tno()
     {
-        $this->db->select('*');
-        $this->db->from('tb_report');
-        $this->db->where('jenis', 'cair');
+        $q = $this->db->query("SELECT ( SELECT COUNT(*) FROM tb_pegawai WHERE status_pegawai='TNO' ) AS TOTAL");
+        return $q->row_array()['TOTAL'];
+    }
 
-        $totalCair =  $this->db->count_all_results();
+    public function pegawai_total_pkwt()
+    {
+        $q = $this->db->query("SELECT ( SELECT COUNT(*) FROM tb_pegawai WHERE status_pegawai='PKWT' ) AS TOTAL");
+        return $q->row_array()['TOTAL'];
+    }
 
-        $this->db->select('*');
-        $this->db->from('tb_report');
-        $this->db->where('jenis', 'kering');
+    public function pegawai_total_organik_ptp()
+    {
+        $q = $this->db->query("SELECT ( SELECT COUNT(*) FROM tb_pegawai WHERE status_pegawai='Organi PTP' ) AS TOTAL");
+        return $q->row_array()['TOTAL'];
+    }
 
-        $totalKering =  $this->db->count_all_results();
-
-        $this->db->select_sum('value');
-        $this->db->where('jenis', 'cair');
-        $result = $this->db->get('tb_report')->row();
-        $totalValueCair = $result->value;
-
-
-        $this->db->select_sum('value');
-        $this->db->where('jenis', 'kering');
-        $result = $this->db->get('tb_report')->row();
-        $totalValueKering = $result->value;
-
-        $dataTotal = array("totalCair" => $totalCair, "totalKering" => $totalKering, "totalValueCair" => $totalValueCair, "totalValueKering" => $totalValueKering);
-
-        return $dataTotal;
+    //Grafik Cabang
+    public function graph_cabang()
+    {
+        $data = $this->db->query("SELECT * from tb_cabang");
+        return $data->result();
+    }
+    //Grafik Produktivitas
+    public function graph_produktivitas()
+    {
+        $data = $this->db->query("SELECT * from tb_produktivitas");
+        return $data->result();
+    }
+    //Grafik Status pegawai
+    public function graph_status()
+    {
+        $data = $this->db->query("SELECT * from tb_statuspegawai");
+        return $data->result();
     }
 }
+
+/* End of file M_Dashboard.php */
+/* Location: ./application/models/M_Dashboard.php */

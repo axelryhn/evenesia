@@ -33,6 +33,30 @@
                         </div>
                     </div>
 
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="pwd">Skil yang dimiliki</label>
+                        <div class="col-sm-10">
+                        <ol>
+                            <li>
+                                <input type="checkbox" name="skill[]" id="skill" value="Hair Style" />Hair Style 
+                            </li>
+                            <li>
+                                <input type="checkbox" name="skill[]" id="skill" value="Wedding" />Wedding
+                            </li>
+                            <li>
+                                <input type="checkbox" name="skill[]" id="skill" value="Graduation" />Graduation
+                            </li>
+                            <li>
+                                <input type="checkbox" name="skill[]" id="skill" value="Hairdo" />Hairdo
+                            </li>
+                            <li>
+                                <input type="checkbox" name="skill[]" id="skill" value="Hijabdo" />Hijabdo
+                            </li>
+                        </ol>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="control-label col-sm-2" for="pwd">Harga</label>
                         <div class="col-sm-10">
@@ -90,6 +114,7 @@
                         <th>No</th>
                         <th>Nama Mua</th>
                         <th>Alamat Mua</th>
+                        <th>Skil yang dimiliki</th>
                         <th>harga</th>
                         <th>instagram</th>
                         <th>Nomor whatsapp</th>
@@ -108,6 +133,7 @@
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $row->nama_mua ?></td>
                                 <td><?php echo $row->alamat_mua ?></td>
+                                <td><?php echo $row->skill ?></td>
                                 <td><?php echo $row->harga ?></td>
                                 <td><?php echo $row->instagram ?></td>
                                 <td><?php echo $row->whatsapp ?></td>

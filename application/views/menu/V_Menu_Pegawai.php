@@ -22,13 +22,15 @@
               <span class="menu-title">Home</span>
             </a>
           </li>
-          <li class="nav-item">
+
+          
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?= base_url('StrukturOrganisasi/index'); ?>">
               <i class="menu-icon mdi mdi-group"></i>
               <span class="menu-title">Struktur Organisasi</span>
             </a>
           </li>
-
+          
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('Ebook/indexpegawai'); ?>">
               <i class="menu-icon mdi mdi-book"></i>
@@ -42,21 +44,22 @@
               <span class="menu-title">Tarif</span>
             </a>
           </li>
-          <!-- 
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('Report/index'); ?>">
-              <i class="menu-icon mdi mdi-file"></i>
-              <span class="menu-report">Report</span>
-            </a>
-          </li> -->
 
           <li class="nav-item">
             <a class="nav-link" href="<?= base_url('Inbox/indexpegawai'); ?>">
               <i class="menu-icon mdi mdi-phone"></i>
-              <span class="menu-title">Saran</span>
+              <span class="menu-title">Kontak</span>
             </a>
 
+          </li> -->
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?= base_url('Gedung/index'); ?>">
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Data Gedung</span>
+            </a>
           </li>
+
         </ul>
       </nav>
       <div class="main-panel">

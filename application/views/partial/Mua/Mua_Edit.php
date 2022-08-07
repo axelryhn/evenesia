@@ -20,6 +20,32 @@
             </tr>
 
             <tr>
+                <td>Skill yang Dimiliki</td>
+                <td>:</td>
+                <td>
+                   
+                    <ol>
+                        <li>
+                            <input type="checkbox" name="skill[]" id="skill" value="Hair Style" />Hair Style 
+                        </li>
+                        <li>
+                            <input type="checkbox" name="skill[]" id="skill" value="Wedding" />Wedding
+                        </li>
+                        <li>
+                            <input type="checkbox" name="skill[]" id="skill" value="Graduation" />Graduation
+                        </li>
+                        <li>
+                            <input type="checkbox" name="skill[]" id="skill" value="Hairdo" />Hairdo
+                        </li>
+                        <li>
+                            <input type="checkbox" name="skill[]" id="skill" value="Hijabdo" />Hijabdo
+                        </li>
+                     </ol>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
                 <td>Harga Mua</td>
                 <td>:</td>
                 <td><input type="text" name="harga" value="<?php echo $queryMuaDetail->harga ?>"></td>

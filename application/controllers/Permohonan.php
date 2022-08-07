@@ -28,19 +28,19 @@ class Permohonan extends CI_Controller
     public function permohonan()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('nipp', 'Nipp', 'required');
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
 
         if ($this->form_validation->run() == TRUE) {
             $id = $this->input->post('id', TRUE);
             $nama      = $this->input->post('nama', TRUE);
-            $status      = $this->input->post('status', TRUE);
+            $nipp       = $this->input->post('nipp', TRUE);
             $keterangan  = $this->input->post('keterangan', TRUE);
 
             $data = array(
                 'id'            => $id,
                 'nama'          => $nama,
-                'status'          => $status,
+                'nipp'          => $nipp,
                 'keterangan'    => $keterangan
             );
             $this->M_Permohonan->insert('tb_permohonan', $data);

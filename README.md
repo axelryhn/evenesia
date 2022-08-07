@@ -1,11 +1,22 @@
-# Web Simulasi Tarif Pelabuhan by Axel Reyhan
+# Sistem Informasi Kepegawaian
+Sistem Informasi Kepegawaian based on CodeIgniter
 
+## Overview
+This work is belongs to my homework task
+
+## Usage
+You can see the full of website on http://localhost/simpeg
 - Admin
 
-  - E-mail : 123
-  - Password : 123
+  - E-mail : admin@gmail.com
+  - Password : admin
 
-- User
+- Ka. BAAK
 
-  - E-mail : 123456
-  - Password : 123
+  - E-mail : baak@gmail.com
+  - Password : baak
+
+- Employee
+
+  - E-mail : pegawai@gmail.com
+  - Password : pegawai

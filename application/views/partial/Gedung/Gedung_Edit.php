@@ -45,13 +45,13 @@
                    
                     <ol>
                             <li>
-                                <input type="radio" name="fasilitas" id="fasilitas" value="wc" />wc umun 
+                                <input type="radio" name="fasilitas" id="fasilitas" value="1" />PHP 4 
                             </li>
                             <li>
-                                <input type="radio" name="fasilitas" id="fasilitas" value="2" />parkiran luas
+                                <input type="radio" name="fasilitas" id="fasilitas" value="2" />PHP 5
                             </li>
                             <li>
-                                <input type="radio" name="fasilitas" id="fasilitas" value="3" />ac 2 pk
+                                <input type="radio" name="fasilitas" id="fasilitas" value="3" />PHP 6
                             </li>
                         </ol>
                     </select>

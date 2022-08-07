@@ -10,13 +10,13 @@
               <label style="font-size: 13px;"><?= $this->session->flashdata('msg_alert'); ?></label>
             </div>
           <?php } ?>
-          <?= form_open_multipart('Dataadmin/add_new', array('method' => 'post')); ?>
+          <?= form_open_multipart('data_master/add_new/admin', array('method' => 'post')); ?>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group row">
                 <label class="col-sm-3 col-form-label">Nama Lengkap</label>
                 <div class="col-sm-9">
-                  <input type="text" name="nama" class="form-control" />
+                  <input type="text" name="namalengkap" class="form-control" />
                 </div>
               </div>
             </div>
@@ -27,8 +27,7 @@
                   <select name="type" class="form-control">
                     <option disabled selected>-- Pilih --</option>
                     <option value="admin">Admin</option>
-                    <option value="mua">Vendor Mua</option>
-                    <option value="gedung">Vendor Gedung</option>
+                    
                   </select>
                 </div>
               </div>
@@ -45,9 +44,9 @@
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Email</label>
+                <label class="col-sm-3 col-form-label">NIPP</label>
                 <div class="col-sm-9">
-                  <input type="text" name="email" class="form-control" />
+                  <input type="text" name="nip" class="form-control" />
                 </div>
               </div>
             </div>

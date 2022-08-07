@@ -60,13 +60,13 @@
                         <div class="col-sm-10">
                         <ol>
                             <li>
-                                <input type="checkbox" name="fasilitas[]" id="fasilitas" value="WC dalam" />wc umum
+                                <input type="checkbox" name="fasilitas[]" id="fasilitas" value="WC dalam" />PHP 4 
                             </li>
                             <li>
-                                <input type="checkbox" name="fasilitas[]" id="fasilitas" value="Parkir gratis" />parkir gratis
+                                <input type="checkbox" name="fasilitas[]" id="fasilitas" value="Parkir gratis" />PHP 5
                             </li>
                             <li>
-                                <input type="checkbox" name="fasilitas[]" id="fasilitas" value="Makanan" />ac 2 pk
+                                <input type="checkbox" name="fasilitas[]" id="fasilitas" value="Makanan" />PHP 6
                             </li>
                         </ol>
                         </div>

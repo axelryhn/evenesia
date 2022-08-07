@@ -28,24 +28,42 @@ class Auth extends CI_Controller
 		is_login(function () {
 			redirect(base_url('dashboard'));
 		});
-
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-			$email = $this->security->xss_clean($this->input->post('email'));
+			$nip = $this->security->xss_clean($this->input->post('nip'));
 			$password = $this->security->xss_clean($this->input->post('password'));
 			// validasi
-			$this->form_validation->set_rules('email', 'Email', 'trim|required');
+			$this->form_validation->set_rules('nip', 'NIP', 'trim|required');
 			$this->form_validation->set_rules('password', 'Password', 'trim|required');
 			if (!$this->form_validation->run()) {
-				$this->session->set_flashdata('msg_alert', 'Masukkan Email dan password');
+				$this->session->set_flashdata('msg_alert', 'Masukkan nipp dan password');
 				redirect(base_url('auth/login'));
 			}
 			// lakukan login
-			$this->m_auth->doLogin($email, $password);
+			$this->m_auth->doLogin($nip, $password);
 		} else {
 			$this->load->view('V_Auth');
 		}
 	}
 
+	// public function lost_password()
+	// {
+	// 	is_login(function () {
+	// 		redirect(base_url('dashboard'));
+	// 	});
+	// 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	// 		$nip = $this->security->xss_clean($this->input->post('nip'));
+	// 		// validasi
+	// 		$this->form_validation->set_rules('nip', 'NIP', 'trim|required');
+	// 		if (!$this->form_validation->run()) {
+	// 			$this->session->set_flashdata('msg_alert', 'Masukkan nipp anda');
+	// 			redirect(base_url('auth/lost_password'));
+	// 		}
+	// 		// lakukan reset password
+	// 		$this->m_auth->doResetPassword($nip, $password);
+	// 	} else {
+	// 		$this->load->view('V_LostPassword');
+	// 	}
+	// }
 
 	public function logout()
 	{

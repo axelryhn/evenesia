@@ -1,10 +1,10 @@
     <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <a class="navbar-brand brand-logo" href="<?=base_url('dashboard');?>">
-          <img src="<?=assets_url('logoptp4.png', false);?>" alt="logo" />
+          <img src="<?=assets_url('evenesialogo.png', false);?>" alt="logo" />
         </a>
         <a class="navbar-brand brand-logo-mini" href="<?=base_url('dashboard');?>">
-          <img src="<?=assets_url('logoptp4.png', false);?>" alt="logo" />
+          <img src="<?=assets_url('evenesialogo.png', false);?>" alt="logo" />
         </a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">

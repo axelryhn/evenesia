@@ -18,6 +18,8 @@ class Change_Password extends CI_Controller {
 			$this->user_type = 'BAAK';
 		} else if( $this->session->userdata('user_type') == 'pegawai' ) {
 			$this->user_type = 'Pegawai';
+		} else if( $this->session->userdata('user_type') == 'vendor' ) {
+			$this->user_type = 'Vendor';
 		}
 	}
 

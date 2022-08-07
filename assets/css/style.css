@@ -17440,7 +17440,7 @@ input:focus {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 63px);
-  background-image: url("../images/auth/backgrounddasar1.png");
+  background-image: url("../images/auth/batik.jpg");
   font-family: "Poppins", sans-serif;
   padding: 0;
   width: 255px;
@@ -17714,7 +17714,7 @@ input:focus {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background-image: url("../images/auth/backgrounddasar1.png");
+  background-image: url("../images/auth/batik.jpg");
   width: 255px;
   height: 63px;
 }
@@ -17722,7 +17722,7 @@ input:focus {
   background: #161a27;
 }
 .navbar.default-layout .navbar-brand-wrapper .navbar-brand {
-  background-image: url("../images/auth/backgrounddasar1.png");
+  background-image: url("../images/auth/batik.jpg");
   color: #ffffff;
   font-size: 1.5rem;
   line-height: 48px;

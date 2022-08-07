@@ -10,18 +10,20 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Nama Lengkap</label>
-                    <input type="text" name="nama" class="form-control" value="<?= $user_name; ?>" placeholder="Nama Lengkap" readonly>
+                    <input type="text" name="nama" class="form-control" id="nama" placeholder="Nama Lengkap">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4">Status</label>
-                    <div class="form-group col-md-6">
-                        <select id="status" name="status">
-                            <option value="Saran Masuk Prioritas">Prioritas</option>
-                            <option value="Saran Masuk Non Prioritas ">Non Prioritas</option>
-                        </select>
-                    </div>
+                    <label for="inputPassword4">NIPP</label>
+                    <input type="text" name="nip" class="form-control" id="nip" placeholder="nip">
                 </div>
-
+                <div class="form-group col-md-6">
+                    <label for="inputJabatan">Jabatan</label>
+                    <input type="text" name="jabatan" class="form-control" id="jabatan" placeholder="Jabatan">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputJabatan">Unit Kerja</label>
+                    <input type="text" name="unit_kerja" class="form-control" id="unit_kerja" placeholder="Unit kerja">
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Keterangan</label>

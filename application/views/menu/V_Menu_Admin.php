@@ -21,57 +21,59 @@
               <span class="menu-title">Home</span>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?= base_url('Inbox/index'); ?>">
               <i class="menu-icon mdi mdi-group"></i>
               <span class="menu-title">Inbox</span>
             </a>
 
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-dm" aria-expanded="false" aria-controls="ui-dm">
               <i class="menu-icon mdi mdi-treasure-chest"></i>
-              <span class="menu-title">Manajemen Data Pegawai</span>
+              <span class="menu-title">Manajemen Data User</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-dm">
               <ul class="nav flex-column sub-menu">
-                <?= generate_navlink($path_page, 'Dataadmin/index', 'Data Admin'); ?>
-
-                <!-- <?= generate_navlink($path_page, 'data_master/pegawai', 'Data Akun Pegawai'); ?> -->
-                <!-- <?= generate_navlink($path_page, 'Datapegawai/index', 'Data Lengkap Pegawai'); ?> -->
-                <?= generate_navlink($path_page, 'Statuspegawai/index', 'Data Status Pegawai'); ?>
+                <?= generate_navlink($path_page, 'data_master/admin', 'Data Admin'); ?>
+                
+                <?= generate_navlink($path_page, 'data_master/pegawai', 'Data Akun Vendor Mua'); ?>
+                <!-- <?= generate_navlink($path_page, 'Datapegawai/index', 'Data Lengkap Pegawai'); ?>
+                <?= generate_navlink($path_page, 'Statuspegawai/index', 'Data Status Pegawai'); ?> -->
+                <?= generate_navlink($path_page, 'data_master/vendor', 'Data Vendor Gedung'); ?>
               </ul>
             </div>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?= base_url('Cabang/index'); ?>">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Data Cabang</span>
             </a>
-          </li>
+          </li> -->
+
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('Regulasi/index'); ?>">
-              <i class="menu-icon mdi mdi-file"></i>
-              <span class="menu-title">Regulasi</span>
+            <a class="nav-link" href="<?= base_url('Gedung/index'); ?>">
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Data Gedung</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="<?= base_url('Report/index'); ?>">
-              <i class="menu-icon mdi mdi-file"></i>
-              <span class="menu-report">Report</span>
+            <a class="nav-link" href="<?= base_url('Mua/index'); ?>">
+              <i class="menu-icon mdi mdi-television"></i>
+              <span class="menu-title">Data Mua</span>
             </a>
           </li>
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="<?= base_url('Ebook/index'); ?>">
               <i class="menu-icon mdi mdi-file"></i>
               <span class="menu-title">Surat Edaran</span>
             </a>
-          </li>
-
+          </li> -->
+         
         </ul>
       </nav>
       <div class="main-panel">

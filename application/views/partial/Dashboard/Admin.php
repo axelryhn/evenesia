@@ -18,7 +18,7 @@
           <div class="container">
             <div class="card">
               <div class="card-body">
-                <h3 style="text-align: center;">Grafik Kekuatan SDM</h3>
+                <h3 style="text-align: center;">Grafik Kekuatan evenesia</h3>
 
                 <canvas id="myChartCabang"></canvas>
 

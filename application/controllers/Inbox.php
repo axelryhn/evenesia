@@ -11,17 +11,10 @@ class Inbox extends CI_Controller
 
     public function index()
     {
-        switch ($this->session->userdata('user_type')) {
-            case '1':
-                $user = "Admin";
-                break;
-            case '2':
-                $user = "Pegawai";
-                break;
-        }
+
         $queryAllInbox = $this->M_Inbox->getData();
         $DATA = array('queryAllInb' => $queryAllInbox);
-        $data = generate_page('Inbox', 'Inbox/index', $user);
+        $data = generate_page('Inbox', 'Inbox/index', 'Admin');
 
         $data['content'] = $this->load->view('partial/Inbox/Inbox',  $DATA, true);
         $this->load->view('V_Inbox', $data);
@@ -42,12 +35,6 @@ class Inbox extends CI_Controller
         $this->load->view('V_Inbox', $data);
     }
 
-    public function getNama($id)
-    {
-        $user = $this->M_Report->getNama($id);
-        return $user->nama;
-    }
-
     public function halaman_tambah()
     {
         $this->load->view('partial/Inbox/Inbox');
@@ -58,52 +45,54 @@ class Inbox extends CI_Controller
         $queryInboxDetail = $this->M_Inbox->getDataDetail($id);
         $DATA = array('queryInbDetail' => $queryInboxDetail);
         $data = generate_page('Inbox', 'Inbox/halaman_edit', 'Admin');
-        $data['content'] = $this->load->view('partial/Inbox/Inbox_Edit',  $DATA, true);
+        $data['content'] = $this->load->view('partial/Inbox/Edit',  $DATA, true);
         $this->load->view('V_Inbox', $data);
     }
 
     public function fungsiTambah()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
+        $this->form_validation->set_rules('nip', 'Nipp', 'required');
         $this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
 
-
-
         $nama = $this->input->post('nama');
-        $status = $this->input->post('status');
+        $nip = $this->input->post('nip');
+        $unit_kerja = $this->input->post('unit_kerja');
+        $jabatan = $this->input->post('jabatan');
         $keterangan = $this->input->post('keterangan');
 
         $ArrInsert = array(
             'nama' => $nama,
-            'status' => $status,
+            'nip' => $nip,
+            'unit_kerja' => $unit_kerja,
+            'jabatan' => $jabatan,
             'keterangan' => $keterangan
         );
-        if ($this->form_validation->run()) {
-            $this->M_Inbox->insertData($ArrInsert);
-            $this->session->set_flashdata('msg_alert', 'Saran berhasil ditambah');
-            redirect(base_url('Inbox/indexpegawai'));
-        } else {
-            $this->session->set_flashdata('msg_alert', 'Data Tidak Lengkap');
-            redirect(base_url('Inbox/indexpegawai'));
-        }
+
+        $this->M_Inbox->insertData($ArrInsert);
+        $this->session->set_flashdata('msg_alert', 'Data Inbox berhasil ditambah');
+        redirect(base_url('Inbox/indexpegawai'));
     }
 
     public function fungsiEdit()
     {
         $id = $this->input->post('id');
         $nama = $this->input->post('nama');
-        $status = $this->input->post('status');
+        $nip = $this->input->post('nip');
+        $unit_kerja = $this->input->post('unit_kerja');
+        $jabatan = $this->input->post('jabatan');
         $keterangan = $this->input->post('keterangan');
 
         $ArrUpdate = array(
             'nama' => $nama,
-            'status' => $status,
+            'nip' => $nip,
+            'unit_kerja' => $unit_kerja,
+            'jabatan' => $jabatan,
             'keterangan' => $keterangan
         );
 
         $this->M_Inbox->updateData($id, $ArrUpdate);
-        $this->session->set_flashdata('msg_alert', 'Saran berhasil diubah');
+        $this->session->set_flashdata('msg_alert', 'Data Inbox berhasil diubah');
         redirect(base_url('Inbox/index'));
     }
 
